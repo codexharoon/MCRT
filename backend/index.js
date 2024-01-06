@@ -1,32 +1,31 @@
-// index.js
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const dbConnection = require('./utils/dbConnection');
-const dbSetup = require('./utils/dbSetup');
+const queryAsync = require('./src/Config/dbConnection');
+const dbSetup = require('./src/utils/dbSetup');
+const carRoutes = require('./src/Routes/carRoutes');
+const tourRoutes = require('./src/Routes/tourRoutes')
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// Test MySQL connection
-dbConnection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err);
-  } else {
+//Conncection
+(async () => {
+  try {
+    await queryAsync('SELECT 1'); //Query to check connection
     console.log('Connected to MySQL database!');
-    // Check if the database and users table exist
-    dbSetup.createDatabaseAndTables();
+    await dbSetup.createDatabaseAndTables();
+  } catch (err) {
+    console.error('Error connecting to MySQL:', err);
   }
-});
+})();
+//For Cars
+app.use('/api/car', carRoutes);
 
-app.get('/', (req, res) => {
-  res.send('API is working!');
-});
+//For Tours
 
-app.use((req, res, next) => {
-  res.status(404).send('404: Page not found');
-});
+app.use('/api/tour', tourRoutes)
 
 app.listen(process.env.PORT || 8888, () => {
   console.log(`Server is running on port ${process.env.PORT || 8888}`);
