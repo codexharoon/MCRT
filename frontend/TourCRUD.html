@@ -45,12 +45,21 @@
     </nav>
 
     <div class="container mx-auto mt-8 mb-8 px-4">
-      <button
-        id="addTourBtn"
-        class="bg-green-500 text-white px-4 py-2 rounded mb-4"
-      >
-        Add Tour
-      </button>
+      <div>
+        <button
+          id="addTourBtn"
+          class="bg-green-500 text-white px-4 py-2 rounded mb-4 hidden"
+        >
+          Add Tour
+        </button>
+
+        <button
+          id="addCarBtn"
+          class="bg-green-500 text-white px-4 py-2 rounded mb-4 hidden"
+        >
+          Add Car
+        </button>
+      </div>
       <form id="tour-form" class="m-4 hidden">
         <input
           type="text"
@@ -133,6 +142,62 @@
           <button
             type="submit"
             id="saveBtn"
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+
+      <!-- car form  -->
+
+      <form id="car-form" class="m-4 hidden">
+        <input
+          type="text"
+          id="c-title"
+          placeholder="Title"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-description"
+          placeholder="Description"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-price"
+          placeholder="Price"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-tag"
+          placeholder="Tag"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="file"
+          id="c-image"
+          placeholder="Image File"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <div class="flex justify-end">
+          <button
+            type="button"
+            id="c-cancelBtn"
+            class="bg-red-500 text-white px-4 py-2 rounded mr-2"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            id="c-saveBtn"
             class="bg-blue-500 text-white px-4 py-2 rounded"
           >
             Save

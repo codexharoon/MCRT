@@ -2,185 +2,213 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <style>
+      /* Inline styles for demo purposes */
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
+  <body class="bg-gray-200">
+    <nav class="bg-gray-800 text-white p-4 flex justify-between">
+      <div class="flex items-center">
+        <img
+          src="./assets/logo-Crop-removebg.png"
+          alt="MCRT LOGO"
+          class="h-10"
+        />
+        <ul class="flex ml-8">
+          <li class="mr-6">
+            <button
+              href="#"
+              id="toursBtn"
+              class="border border-white px-4 py-2 rounded hover:bg-slate-600"
+            >
+              Tours
+            </button>
+          </li>
+          <li>
+            <button
+              href="#"
+              id="carsBtn"
+              class="border border-white px-4 py-2 rounded hover:bg-slate-600"
+            >
+              Cars
+            </button>
+          </li>
+        </ul>
+      </div>
+      <button id="logoutBtn" class="border border-white px-4 py-2 rounded">
+        Logout
+      </button>
+    </nav>
 
-  <body class="bg-gray-100">
-    <header class="bg-white shadow">
-      <div
-        class="container mx-auto px-4 py-3 flex justify-between items-center"
-      >
-        <div class="flex items-center">
-          <!-- Logo -->
-          <img src="./assets/logo-Crop-removebg.png" alt="Logo" class="h-8" />
+    <div class="container mx-auto mt-8 mb-8 px-4">
+      <div>
+        <button
+          id="addTourBtn"
+          class="bg-green-500 text-white px-4 py-2 rounded mb-4 hidden"
+        >
+          Add Tour
+        </button>
+
+        <button
+          id="addCarBtn"
+          class="bg-green-500 text-white px-4 py-2 rounded mb-4 hidden"
+        >
+          Add Car
+        </button>
+      </div>
+      <form id="tour-form" class="m-4 hidden">
+        <input
+          type="text"
+          id="title"
+          placeholder="Title"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="description"
+          placeholder="Description"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="price"
+          placeholder="Price"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="duration"
+          placeholder="Duration"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="location"
+          placeholder="Location"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="schedule"
+          placeholder="Schedule"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="groupSize"
+          placeholder="Group Size"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="availability"
+          placeholder="Availability"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="tag"
+          placeholder="Tag"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="file"
+          id="image"
+          placeholder="Image File"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <div class="flex justify-end">
+          <button
+            type="button"
+            id="cancelBtn"
+            class="bg-red-500 text-white px-4 py-2 rounded mr-2"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            id="saveBtn"
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Save
+          </button>
         </div>
-        <div class="flex items-center space-x-4">
-          <!-- Tours Button -->
+      </form>
+
+      <!-- car form  -->
+
+      <form id="car-form" class="m-4 hidden">
+        <input
+          type="text"
+          id="c-title"
+          placeholder="Title"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-description"
+          placeholder="Description"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-price"
+          placeholder="Price"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="c-tag"
+          placeholder="Tag"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="file"
+          id="c-image"
+          placeholder="Image File"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <div class="flex justify-end">
           <button
-            onclick="showTours()"
-            class="text-gray-600 hover:text-gray-800 focus:outline-none"
+            type="button"
+            id="c-cancelBtn"
+            class="bg-red-500 text-white px-4 py-2 rounded mr-2"
           >
-            Tours
+            Cancel
           </button>
-          <!-- Cars Button -->
           <button
-            onclick="showCars()"
-            class="text-gray-600 hover:text-gray-800 focus:outline-none"
+            type="submit"
+            id="c-saveBtn"
+            class="bg-blue-500 text-white px-4 py-2 rounded"
           >
-            Cars
-          </button>
-          <!-- Logout Button -->
-          <button
-            onclick="logout()"
-            class="text-gray-600 hover:text-gray-800 focus:outline-none"
-          >
-            Logout
+            Save
           </button>
         </div>
-      </div>
-    </header>
+      </form>
 
-    <div id="toursDashboard" class="hidden container mx-auto my-8 px-4">
-      <!-- Add Tour Form -->
-      <div id="addTourForm" class="hidden">
-        <!-- Form for adding a tour -->
-        <!-- ... (Form HTML as described in the question) -->
-      </div>
-
-      <!-- Display Tours -->
-      <div
-        id="displayTours"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <!-- Cards to display fetched tours -->
-        <!-- ... (Tour cards will be dynamically populated here) -->
-      </div>
-    </div>
-
-    <div id="carsDashboard" class="hidden container mx-auto my-8 px-4">
-      <!-- Add Car Form -->
-      <div id="addCarForm" class="hidden">
-        <!-- Form for adding a car -->
-        <!-- ... (Form HTML as described in the question) -->
-      </div>
-
-      <!-- Display Cars -->
-      <div
-        id="displayCars"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <!-- Cards to display fetched cars -->
-        <!-- ... (Car cards will be dynamically populated here) -->
-      </div>
+      <!-- tours cards  -->
+      <div id="cardContainer" class="grid grid-cols-3 gap-4"></div>
     </div>
 
     <script type="module" src="./main.js"></script>
-    <script>
-      // Function to show/hide Tours dashboard
-      function showTours() {
-        document.getElementById("toursDashboard").classList.remove("hidden");
-        document.getElementById("carsDashboard").classList.add("hidden");
-        // Fetch and display tours using Axios
-        // axios.get('http://localhost:8000/api/tour/getAllTours')
-        // .then(response => {
-        //     // Handle the response to populate the displayTours section with fetched data
-        // })
-        // .catch(error => {
-        //     console.error('Error fetching tours:', error);
-        // });
-      }
-
-      // Function to show/hide Cars dashboard
-      function showCars() {
-        document.getElementById("carsDashboard").classList.remove("hidden");
-        document.getElementById("toursDashboard").classList.add("hidden");
-        // Fetch and display cars using Axios
-        // axios.get('http://localhost:8000/api/car/getAllCars')
-        // .then(response => {
-        //     // Handle the response to populate the displayCars section with fetched data
-        // })
-        // .catch(error => {
-        //     console.error('Error fetching cars:', error);
-        // });
-      }
-
-      // Function to handle adding a tour
-      function addTour() {
-        // Logic to handle adding a tour using Axios
-        // axios.post('http://localhost:8000/api/tour/addTour', formData)
-        // .then(response => {
-        //     // Handle successful addition and update the display
-        // })
-        // .catch(error => {
-        //     console.error('Error adding tour:', error);
-        // });
-      }
-
-      // Function to handle editing a tour
-      function editTour(tourId) {
-        // Logic to handle editing a tour using Axios
-        // axios.put(`http://localhost:8000/api/tour/updateTour/${tourId}`, updatedData)
-        // .then(response => {
-        //     // Handle successful update and refresh the display
-        // })
-        // .catch(error => {
-        //     console.error('Error updating tour:', error);
-        // });
-      }
-
-      // Function to handle deleting a tour
-      function deleteTour(tourId) {
-        // Logic to handle deleting a tour using Axios
-        // axios.delete(`http://localhost:8000/api/tour/deleteTour/${tourId}`)
-        // .then(response => {
-        //     // Handle successful deletion and refresh the display
-        // })
-        // .catch(error => {
-        //     console.error('Error deleting tour:', error);
-        // });
-      }
-
-      // Function to handle adding a car
-      function addCar() {
-        // Logic to handle adding a car using Axios
-        // axios.post('http://localhost:8000/api/car/addCar', formData)
-        // .then(response => {
-        //     // Handle successful addition and update the display
-        // })
-        // .catch(error => {
-        //     console.error('Error adding car:', error);
-        // });
-      }
-
-      // Function to handle editing a car
-      function editCar(carId) {
-        // Logic to handle editing a car using Axios
-        // axios.put(`http://localhost:8000/api/car/updateCar/${carId}`, updatedData)
-        // .then(response => {
-        //     // Handle successful update and refresh the display
-        // })
-        // .catch(error => {
-        //     console.error('Error updating car:', error);
-        // });
-      }
-
-      // Function to handle deleting a car
-      function deleteCar(carId) {
-        // Logic to handle deleting a car using Axios
-        // axios.delete(`http://localhost:8000/api/car/deleteCar/${carId}`)
-        // .then(response => {
-        //     // Handle successful deletion and refresh the display
-        // })
-        // .catch(error => {
-        //     console.error('Error deleting car:', error);
-        // });
-      }
-
-      // Function to logout
-      function logout() {
-        // Logic to handle logout
-      }
-    </script>
   </body>
 </html>
