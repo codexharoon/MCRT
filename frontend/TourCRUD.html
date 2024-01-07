@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Dashboard</title>
-    <!-- <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    /> -->
     <style>
       /* Inline styles for demo purposes */
       .hidden {
@@ -20,52 +16,111 @@
         <img
           src="./assets/logo-Crop-removebg.png"
           alt="MCRT LOGO"
-          class="h-8"
+          class="h-10"
         />
         <ul class="flex ml-8">
-          <li class="mr-6"><a href="#" id="toursBtn">Tours</a></li>
-          <li><a href="#" id="carsBtn">Cars</a></li>
+          <li class="mr-6">
+            <button
+              href="#"
+              id="toursBtn"
+              class="border border-white px-4 py-2 rounded hover:bg-slate-600"
+            >
+              Tours
+            </button>
+          </li>
+          <li>
+            <button
+              href="#"
+              id="carsBtn"
+              class="border border-white px-4 py-2 rounded hover:bg-slate-600"
+            >
+              Cars
+            </button>
+          </li>
         </ul>
       </div>
-      <button
-        id="addRecordBtn"
-        class="bg-green-500 text-white px-4 py-2 rounded"
-      >
-        Add
-      </button>
       <button id="logoutBtn" class="border border-white px-4 py-2 rounded">
         Logout
       </button>
     </nav>
 
-    <div class="container mx-auto mt-8 px-4">
-      <div id="cardContainer" class="grid grid-cols-3 gap-4"></div>
-      <form id="form" class="mt-4 hidden">
-        <!-- Form fields for adding/editing -->
-        <!-- You can style this form using Tailwind CSS classes -->
+    <div class="container mx-auto mt-8 mb-8 px-4">
+      <button
+        id="addTourBtn"
+        class="bg-green-500 text-white px-4 py-2 rounded mb-4"
+      >
+        Add Tour
+      </button>
+      <form id="tour-form" class="m-4 hidden">
         <input
           type="text"
           id="title"
           placeholder="Title"
           class="border-gray-300 border p-2 mb-2 w-full"
+          required
         />
         <input
           type="text"
           id="description"
           placeholder="Description"
           class="border-gray-300 border p-2 mb-2 w-full"
+          required
         />
         <input
           type="text"
           id="price"
           placeholder="Price"
           class="border-gray-300 border p-2 mb-2 w-full"
+          required
         />
         <input
           type="text"
-          id="image"
-          placeholder="Image URL"
+          id="duration"
+          placeholder="Duration"
           class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="location"
+          placeholder="Location"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="schedule"
+          placeholder="Schedule"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="groupSize"
+          placeholder="Group Size"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="availability"
+          placeholder="Availability"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          id="tag"
+          placeholder="Tag"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="file"
+          id="image"
+          placeholder="Image File"
+          class="border-gray-300 border p-2 mb-2 w-full"
+          required
         />
         <div class="flex justify-end">
           <button
@@ -84,196 +139,10 @@
           </button>
         </div>
       </form>
+
+      <!-- tours cards  -->
+      <div id="cardContainer" class="grid grid-cols-3 gap-4"></div>
     </div>
-
-    <script>
-      // Sample data
-      const tours = [
-        {
-          id: 1,
-          title: "Tour 1",
-          description: "Description 1",
-          price: "$100",
-          image: "assets/Tours/neelum.jpg",
-        },
-        {
-          id: 2,
-          title: "Tour 2",
-          description: "Description 2",
-          price: "$150",
-          image: "assets/Tours/naran.jpg",
-        },
-      ];
-
-      const cars = [
-        {
-          id: 1,
-          title: "Car 1",
-          description: "Car Description 1",
-          price: "$20000",
-          image: "car1.jpg",
-        },
-        {
-          id: 2,
-          title: "Car 2",
-          description: "Car Description 2",
-          price: "$25000",
-          image: "car2.jpg",
-        },
-      ];
-
-      // Function to display cards based on the selected menu
-      function displayCards(data) {
-        const cardContainer = document.getElementById("cardContainer");
-        cardContainer.innerHTML = "";
-        data.forEach((item) => {
-          const card = document.createElement("div");
-          card.classList.add("bg-white", "p-4", "rounded", "shadow");
-          card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" class="h-32 w-full object-cover mb-4">
-          <h2 class="text-lg font-semibold">${item.title}</h2>
-          <p class="text-sm text-gray-600 mb-2">${item.description}</p>
-          <p class="text-sm font-semibold">${item.price}</p>
-          <div class="mt-4">
-            <button class="bg-blue-500 text-white px-2 py-1 rounded mr-2 editBtn">Edit</button>
-            <button class="bg-red-500 text-white px-2 py-1 rounded deleteBtn">Delete</button>
-          </div>
-        `;
-          cardContainer.appendChild(card);
-
-          // Edit button click event
-          card.querySelector(".editBtn").addEventListener("click", () => {
-            document.getElementById("form").classList.remove("hidden");
-            document.getElementById("title").value = item.title;
-            document.getElementById("description").value = item.description;
-            document.getElementById("price").value = item.price;
-            document.getElementById("image").value = item.image;
-          });
-
-          // Delete button click event
-          card.querySelector(".deleteBtn").addEventListener("click", () => {
-            if (data === tours) {
-              tours.splice(tours.indexOf(item), 1);
-            } else if (data === cars) {
-              cars.splice(cars.indexOf(item), 1);
-            }
-            displayCards(data);
-          });
-        });
-      }
-
-      // Show Tours by default
-      displayCards(tours);
-
-      // Toggle form visibility and populate data on Edit button click
-      document.getElementById("toursBtn").addEventListener("click", () => {
-        document.getElementById("form").classList.add("hidden");
-        displayCards(tours);
-      });
-
-      document.getElementById("carsBtn").addEventListener("click", () => {
-        document.getElementById("form").classList.add("hidden");
-        displayCards(cars);
-      });
-
-      // Show/hide form on Cancel button click
-      document.getElementById("cancelBtn").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.getElementById("form").classList.add("hidden");
-      });
-
-      // Form submission for adding/editing data
-      document.getElementById("form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-          title: document.getElementById("title").value,
-          description: document.getElementById("description").value,
-          price: document.getElementById("price").value,
-          image: document.getElementById("image").value,
-        };
-
-        if (
-          formData.title &&
-          formData.description &&
-          formData.price &&
-          formData.image
-        ) {
-          if (data === tours) {
-            tours.push({ id: Date.now(), ...formData });
-          } else if (data === cars) {
-            cars.push({ id: Date.now(), ...formData });
-          }
-          displayCards(data);
-          document.getElementById("form").classList.add("hidden");
-        } else {
-          alert("Please fill in all fields!");
-        }
-      });
-
-      // Logout button action (dummy action)
-      document.getElementById("logoutBtn").addEventListener("click", () => {
-        alert("Logout clicked");
-        // Perform logout functionality here
-      });
-
-      // Function to handle adding a new record
-      function addRecord(data) {
-        document.getElementById("form").classList.remove("hidden");
-        document.getElementById("title").value = "";
-        document.getElementById("description").value = "";
-        document.getElementById("price").value = "";
-        document.getElementById("image").value = "";
-
-        // Save button for adding a new record
-        document.getElementById("saveBtn").innerText = "Add";
-
-        document
-          .getElementById("saveBtn")
-          .addEventListener("click", function (e) {
-            e.preventDefault();
-            const formData = {
-              title: document.getElementById("title").value,
-              description: document.getElementById("description").value,
-              price: document.getElementById("price").value,
-              image: document.getElementById("image").value,
-            };
-
-            if (
-              formData.title &&
-              formData.description &&
-              formData.price &&
-              formData.image
-            ) {
-              if (data === tours) {
-                tours.push({ id: Date.now(), ...formData });
-              } else if (data === cars) {
-                cars.push({ id: Date.now(), ...formData });
-              }
-              displayCards(data);
-              document.getElementById("form").classList.add("hidden");
-            } else {
-              alert("Please fill in all fields!");
-            }
-          });
-      }
-
-      // Add button click event to add new record
-      document.getElementById("addRecordBtn").addEventListener("click", () => {
-        addRecord(tours); // You can choose to add to 'tours' or 'cars'
-      });
-
-      // ... (rest of your existing event listeners and code)
-
-      // Delete button click event
-      function deleteRecord(data, item) {
-        if (data === tours) {
-          tours.splice(tours.indexOf(item), 1);
-        } else if (data === cars) {
-          cars.splice(cars.indexOf(item), 1);
-        }
-        displayCards(data);
-      }
-    </script>
 
     <script type="module" src="./main.js"></script>
   </body>

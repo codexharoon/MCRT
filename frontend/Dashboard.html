@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+
+  <body class="bg-gray-100">
+    <header class="bg-white shadow">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <!-- Logo -->
+          <img src="./assets/logo-Crop-removebg.png" alt="Logo" class="h-8" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <!-- Tours Button -->
+          <button
+            onclick="showTours()"
+            class="text-gray-600 hover:text-gray-800 focus:outline-none"
+          >
+            Tours
+          </button>
+          <!-- Cars Button -->
+          <button
+            onclick="showCars()"
+            class="text-gray-600 hover:text-gray-800 focus:outline-none"
+          >
+            Cars
+          </button>
+          <!-- Logout Button -->
+          <button
+            onclick="logout()"
+            class="text-gray-600 hover:text-gray-800 focus:outline-none"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="toursDashboard" class="hidden container mx-auto my-8 px-4">
+      <!-- Add Tour Form -->
+      <div id="addTourForm" class="hidden">
+        <!-- Form for adding a tour -->
+        <!-- ... (Form HTML as described in the question) -->
+      </div>
+
+      <!-- Display Tours -->
+      <div
+        id="displayTours"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Cards to display fetched tours -->
+        <!-- ... (Tour cards will be dynamically populated here) -->
+      </div>
+    </div>
+
+    <div id="carsDashboard" class="hidden container mx-auto my-8 px-4">
+      <!-- Add Car Form -->
+      <div id="addCarForm" class="hidden">
+        <!-- Form for adding a car -->
+        <!-- ... (Form HTML as described in the question) -->
+      </div>
+
+      <!-- Display Cars -->
+      <div
+        id="displayCars"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Cards to display fetched cars -->
+        <!-- ... (Car cards will be dynamically populated here) -->
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+    <script>
+      // Function to show/hide Tours dashboard
+      function showTours() {
+        document.getElementById("toursDashboard").classList.remove("hidden");
+        document.getElementById("carsDashboard").classList.add("hidden");
+        // Fetch and display tours using Axios
+        // axios.get('http://localhost:8000/api/tour/getAllTours')
+        // .then(response => {
+        //     // Handle the response to populate the displayTours section with fetched data
+        // })
+        // .catch(error => {
+        //     console.error('Error fetching tours:', error);
+        // });
+      }
+
+      // Function to show/hide Cars dashboard
+      function showCars() {
+        document.getElementById("carsDashboard").classList.remove("hidden");
+        document.getElementById("toursDashboard").classList.add("hidden");
+        // Fetch and display cars using Axios
+        // axios.get('http://localhost:8000/api/car/getAllCars')
+        // .then(response => {
+        //     // Handle the response to populate the displayCars section with fetched data
+        // })
+        // .catch(error => {
+        //     console.error('Error fetching cars:', error);
+        // });
+      }
+
+      // Function to handle adding a tour
+      function addTour() {
+        // Logic to handle adding a tour using Axios
+        // axios.post('http://localhost:8000/api/tour/addTour', formData)
+        // .then(response => {
+        //     // Handle successful addition and update the display
+        // })
+        // .catch(error => {
+        //     console.error('Error adding tour:', error);
+        // });
+      }
+
+      // Function to handle editing a tour
+      function editTour(tourId) {
+        // Logic to handle editing a tour using Axios
+        // axios.put(`http://localhost:8000/api/tour/updateTour/${tourId}`, updatedData)
+        // .then(response => {
+        //     // Handle successful update and refresh the display
+        // })
+        // .catch(error => {
+        //     console.error('Error updating tour:', error);
+        // });
+      }
+
+      // Function to handle deleting a tour
+      function deleteTour(tourId) {
+        // Logic to handle deleting a tour using Axios
+        // axios.delete(`http://localhost:8000/api/tour/deleteTour/${tourId}`)
+        // .then(response => {
+        //     // Handle successful deletion and refresh the display
+        // })
+        // .catch(error => {
+        //     console.error('Error deleting tour:', error);
+        // });
+      }
+
+      // Function to handle adding a car
+      function addCar() {
+        // Logic to handle adding a car using Axios
+        // axios.post('http://localhost:8000/api/car/addCar', formData)
+        // .then(response => {
+        //     // Handle successful addition and update the display
+        // })
+        // .catch(error => {
+        //     console.error('Error adding car:', error);
+        // });
+      }
+
+      // Function to handle editing a car
+      function editCar(carId) {
+        // Logic to handle editing a car using Axios
+        // axios.put(`http://localhost:8000/api/car/updateCar/${carId}`, updatedData)
+        // .then(response => {
+        //     // Handle successful update and refresh the display
+        // })
+        // .catch(error => {
+        //     console.error('Error updating car:', error);
+        // });
+      }
+
+      // Function to handle deleting a car
+      function deleteCar(carId) {
+        // Logic to handle deleting a car using Axios
+        // axios.delete(`http://localhost:8000/api/car/deleteCar/${carId}`)
+        // .then(response => {
+        //     // Handle successful deletion and refresh the display
+        // })
+        // .catch(error => {
+        //     console.error('Error deleting car:', error);
+        // });
+      }
+
+      // Function to logout
+      function logout() {
+        // Logic to handle logout
+      }
+    </script>
+  </body>
+</html>

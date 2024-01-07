@@ -1,54 +1,18 @@
-const phone = '0300 9049602';
-const toursCardsInfo = [
-    {
-        img: `assets/Tours/naran.jpg`,
-        title: 'Naran Kaghan Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/hunza.jpg`,
-        title: 'Hunza Valley Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/swat.jpg`,
-        title: 'Swat Valley Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/muree.jpg`,
-        title: 'Murree Galyat Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/chitral.jpg`,
-        title: 'Chitral Valley Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/skardu.jpg`,
-        title: 'Skardu Valley Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/neelum.jpg`,
-        title: 'Neelum Valley Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-    {
-        img: `assets/Tours/custom.jpg`,
-        title: 'Custom Pakistan Tour',
-        pkg: 'Premium Tour Pakages',
-        phone
-    },
-];
+import axios from 'axios';
+
+const toursCardsInfo = [];
+
+const getAllTours = async () => {
+    try {
+        const data = await axios.get('http://localhost:8000/api/getAllTours');
+        toursCardsInfo = data.data;
+        log(toursCardsInfo);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getAllTours();
 
 let cardsHTML = '';
 
