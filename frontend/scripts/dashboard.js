@@ -77,10 +77,10 @@ const displayTours = async () => {
           formData.append("Tag", document.getElementById("tag").value);
           formData.append("image", document.getElementById("image").files[0]);
 
-          if (!document.getElementById("image").value) {
-            alert("Please upload an image!");
-            return;
-          }
+          // if (!document.getElementById("image").value) {
+          //   alert("Please upload an image!");
+          //   return;
+          // }
 
           if (
             formData.get("Title") &&
@@ -293,10 +293,10 @@ const displayCars = async () => {
           formData.append("Tag", document.getElementById("c-tag").value);
           formData.append("image", document.getElementById("c-image").files[0]);
 
-          if (!document.getElementById("c-image").value) {
-            alert("Please upload an image!");
-            return;
-          }
+          // if (!document.getElementById("c-image").value) {
+          //   alert("Please upload an image!");
+          //   return;
+          // }
 
           if (
             formData.get("Title") &&
