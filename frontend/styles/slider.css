@@ -1,0 +1,26 @@
+.pics {
+  margin: auto;
+}
+
+.pics img {
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  width: 800px;
+  height: 500px;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 850px) {
+  .pics img {
+    width: 500px;
+  }
+}
+
+@media (max-width: 650px) {
+  .pics img {
+    width: 380px;
+    height: 350px;
+  }
+}

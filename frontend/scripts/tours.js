@@ -10,10 +10,11 @@ const getAllTours = async () => {
 
     toursCardsInfo.forEach((card) => {
       cardsHTML += `
-            <div class="rounded overflow-hidden shadow-lg">
+            <div class="rounded-md overflow-hidden shadow-lg">
             <img class="w-full h-[200px] overflow-hidden object-cover" src=${card.ImageUrl} alt=${card.Title}>
             <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">${card.Title}</div>
+            <div class="text-sm mb-2">Rs ${card.Price}</div>
             <p class="text-gray-700 text-base">
                 ${card.Description}
             </p>
