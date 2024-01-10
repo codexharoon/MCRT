@@ -1,5 +1,17 @@
 // admin tour crud
 
+// handle admin login
+window.addEventListener("load", () => {
+  if (localStorage.getItem("admin") == "false") {
+    window.location.href = "http://localhost:5173/loginForm.html";
+  }
+});
+
+// on dashboard leave set admin to false
+window.addEventListener("unload", () => {
+  localStorage.setItem("admin", "false");
+});
+
 // Function to display cards based on the selected menu
 const displayTours = async () => {
   const cardContainer = document.getElementById("cardContainer");
@@ -77,10 +89,10 @@ const displayTours = async () => {
           formData.append("Tag", document.getElementById("tag").value);
           formData.append("image", document.getElementById("image").files[0]);
 
-          // if (!document.getElementById("image").value) {
-          //   alert("Please upload an image!");
-          //   return;
-          // }
+          if (!document.getElementById("image").value) {
+            alert("Please upload an image!");
+            return;
+          }
 
           if (
             formData.get("Title") &&
@@ -293,10 +305,10 @@ const displayCars = async () => {
           formData.append("Tag", document.getElementById("c-tag").value);
           formData.append("image", document.getElementById("c-image").files[0]);
 
-          // if (!document.getElementById("c-image").value) {
-          //   alert("Please upload an image!");
-          //   return;
-          // }
+          if (!document.getElementById("c-image").value) {
+            alert("Please upload an image!");
+            return;
+          }
 
           if (
             formData.get("Title") &&
@@ -419,6 +431,6 @@ document.getElementById("addCarBtn").addEventListener("click", () => {
 // Logout button action (dummy action)
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
-  alert("Logout clicked");
-  // Perform logout functionality here
+  localStorage.setItem("admin", "false");
+  window.location.href = "http://localhost:5173/loginForm.html";
 });
