@@ -12,6 +12,9 @@
     <!-- google fonts  -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap");
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
 
     <!-- header css file  -->
@@ -136,7 +139,14 @@
             Explore your destination with comfort and convenience. Book your
             next adventure today!
           </p>
-          <a href="#cars-section" class="btn">Explore Cars</a>
+          <a id="explore-car-audio-btn" href="#cars-section" class="btn"
+            >Explore Cars</a
+          >
+          <audio
+            id="explore-car-audio"
+            src="./Audio/mixkit-fast-car-drive-by-1538.wav"
+            class="hidden"
+          ></audio>
         </div>
         <div class="header-right">
           <div class="sq-box">
@@ -1524,6 +1534,7 @@
 
     <script type="module" src="/main.js"></script>
     <script src="./scripts/nav.js"></script>
+    <script src="./scripts/explore-car-audio.js"></script>
     <script src="./scripts/tours.js"></script>
     <script src="./scripts/cars.js"></script>
     <script src="./scripts/contact-us.js"></script>
