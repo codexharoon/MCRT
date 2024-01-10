@@ -8,9 +8,9 @@ window.addEventListener("load", () => {
 });
 
 // on dashboard leave set admin to false
-window.addEventListener("unload", () => {
-  localStorage.setItem("admin", "false");
-});
+// window.addEventListener("unload", () => {
+//   localStorage.setItem("admin", "false");
+// });
 
 // Function to display cards based on the selected menu
 const displayTours = async () => {
@@ -157,6 +157,11 @@ document.getElementById("toursBtn").addEventListener("click", () => {
   document.getElementById("tour-form").classList.add("hidden");
   document.getElementById("addTourBtn").classList.remove("hidden");
   document.getElementById("addCarBtn").classList.add("hidden");
+
+  document.getElementById("car-form").classList.add("hidden");
+
+  document.getElementById("dashboard-home-content").classList.add("hidden");
+
   displayTours();
 });
 
@@ -253,6 +258,10 @@ document.getElementById("carsBtn").addEventListener("click", () => {
   document.getElementById("car-form").classList.add("hidden");
   document.getElementById("addCarBtn").classList.remove("hidden");
   document.getElementById("addTourBtn").classList.add("hidden");
+
+  document.getElementById("tour-form").classList.add("hidden");
+
+  document.getElementById("dashboard-home-content").classList.add("hidden");
 
   displayCars();
 });
