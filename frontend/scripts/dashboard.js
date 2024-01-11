@@ -441,5 +441,5 @@ document.getElementById("addCarBtn").addEventListener("click", () => {
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
   localStorage.setItem("admin", "false");
-  window.location.href = "http://localhost:5173/loginForm.html";
+  window.location.href = "http://localhost:5173/";
 });
