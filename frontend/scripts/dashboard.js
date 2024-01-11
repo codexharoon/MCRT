@@ -115,6 +115,11 @@ const displayTours = async () => {
               .then((response) => {
                 // reload window
                 // window.location.reload();
+                // afetr reload display tours
+
+                // setTimeout(() => {
+                //   displayTours();
+                // }, 3000);
                 displayTours();
               })
               .catch((error) => {
@@ -184,6 +189,7 @@ document.getElementById("addTourBtn").addEventListener("click", () => {
   document.getElementById("groupSize").value = "";
   document.getElementById("availability").value = "";
   document.getElementById("tag").value = "";
+  document.getElementById("image").value = "";
 
   // Save button for adding a new record
   document.getElementById("saveBtn").innerText = "Add";
@@ -239,7 +245,8 @@ document.getElementById("addTourBtn").addEventListener("click", () => {
           })
           .then((response) => {
             // Handle successful update and refresh the display
-            displayTours();
+            // reload window
+            window.location.reload();
           })
           .catch((error) => {
             console.error("Error updating tour:", error);
@@ -382,6 +389,7 @@ document.getElementById("addCarBtn").addEventListener("click", () => {
   document.getElementById("c-description").value = "";
   document.getElementById("c-price").value = "";
   document.getElementById("c-tag").value = "";
+  document.getElementById("c-image").value = "";
 
   // Save button for adding a new record
   document.getElementById("c-saveBtn").innerText = "Add";
@@ -424,8 +432,8 @@ document.getElementById("addCarBtn").addEventListener("click", () => {
           })
           .then((response) => {
             // Handle successful update and refresh the display
-            // document.location.reload();
-            displayCars();
+            document.location.reload();
+            // displayCars();
           })
           .catch((error) => {
             console.error("Error updating car:", error);
